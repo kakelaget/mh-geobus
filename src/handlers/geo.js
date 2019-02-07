@@ -1,19 +1,8 @@
 const fetch = require('node-fetch');
-const xml2js = require('xml2js');
+
+const parseXml = require('../utils/parseXml');
 
 const API_URL = "https://api.entur.org/anshar/1.0/rest/vm";
-
-function parseXml(xmlString) {
-    return new Promise((resolve, reject) => {
-        xml2js.parseString(xmlString, (err, result) => {
-            if (err) {
-                reject(err);
-            }
-
-            resolve(result);
-        })
-    });
-}
 
 async function getGeoPosition(lineRef) {
     let url = API_URL;
