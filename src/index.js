@@ -2,6 +2,12 @@ const fastify = require('fastify')({ logger: true });
 
 const { getGeoPosition } = require('./handlers/geo');
 
+fastify.register(require('fastify-cors'), {
+    origin: [
+        /localhost:?(\d{3,5})?/,
+    ],
+});
+
 fastify.get('/test', async (request, response) => {
     response.type("application/json").code(200);
     return { hello: ", world" };
