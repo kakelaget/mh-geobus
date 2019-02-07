@@ -24,6 +24,6 @@ fastify.get('/geotest', async (request, response) => {
     return { data };
 });
 
-fastify.listen(3000, (err, _) => {
+fastify.listen(3000, '0.0.0.0', (err, _) => {
     if (err) throw err;
 })
