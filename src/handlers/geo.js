@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const xml2js = require('xml2js');
 
-const API_URL = "https://api.entur.org/anshar/1.0/rest/et";
+const API_URL = "https://api.entur.org/anshar/1.0/rest/vm";
 
 function parseXml(xmlString) {
     return new Promise((resolve, reject) => {
@@ -15,9 +15,17 @@ function parseXml(xmlString) {
     });
 }
 
-async function getGeoPosition(lineName) {
+async function getGeoPosition(lineRef) {
+    let url = API_URL;
+    if (lineRef !== undefined &&
+        lineRef !== null &&
+        typeof lineRef === "string" &&
+        lineRef.length > 0) {
+        url += `?lineRef=${lineRef}`;
+    }
+
     const response = await fetch(
-        API_URL,
+        url,
         {
             headers: {
                 "ET-ClientName": "mhgeobus-miljohackknowit"
@@ -37,15 +45,20 @@ async function getGeoPosition(lineName) {
         return Promise.resolve(data
             .Siri
             .ServiceDelivery[0]
-            .EstimatedTimetableDelivery[0]
-            .EstimatedJourneyVersionFrame[0]
-            .EstimatedVehicleJourney[0]
+            .VehicleMonitoringDelivery[0]
+            .VehicleActivity[0]
         );
     } catch (err) {
         return Promise.reject(err);
     }
 }
 
+async function getGeoPositionTest() {
+    const søttentrikken = "RUT:Line:17";
+    return getGeoPosition(søttentrikken);
+}
+
 module.exports = {
     getGeoPosition,
+    getGeoPositionTest,
 }

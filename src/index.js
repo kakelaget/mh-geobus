@@ -8,13 +8,15 @@ fastify.get('/test', async (request, response) => {
 });
 
 fastify.get('/geotest', async (request, response) => {
+    const { lineRef } = request.query;
+
     let data;
     try {
-        data = await getGeoPosition();
+        data = await getGeoPosition(lineRef);
     } catch (err) {
         response.type("application/json").code(500);
         return {
-            error: "Something went wrong",
+            error: err.message,
             message: "Something went wrong while parsing XML from Siri",
         };
     }
