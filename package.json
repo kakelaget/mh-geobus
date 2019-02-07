@@ -1,0 +1,16 @@
+{
+  "name": "mh-geobus",
+  "version": "1.0.0",
+  "description": "Miljøhack repo for geoposition of public transport in Norway",
+  "main": "src/index.js",
+  "repository": "https://github.com/sklirg/mh-geobus",
+  "author": "Håkon Solbjørg <hlsolbjorg@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "fastify": "^1.14.1"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  }
+}
