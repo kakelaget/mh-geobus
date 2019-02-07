@@ -12,6 +12,10 @@ Routes
 
 * Supports ``lineRef`` as a query parameter
 
+``/realtimetest`` Initial implementation of realtime wrapper
+
+* Supports ``lineRef`` as a query parameter
+
 LineRef is on the format ``OPERATOR:LINE_IDENTIFIER:ROUTE_NUMBER``,
 e.g. ``RUT:Line:17``.
 
