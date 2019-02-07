@@ -35,7 +35,7 @@ async function getGeoPosition(lineRef) {
             .Siri
             .ServiceDelivery[0]
             .VehicleMonitoringDelivery[0]
-            .VehicleActivity[0]
+            .VehicleActivity
         );
     } catch (err) {
         return Promise.reject(err);

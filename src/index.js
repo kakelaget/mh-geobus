@@ -19,7 +19,7 @@ fastify.get('/geotest', async (request, response) => {
 
     let data;
     try {
-        data = await getGeoPosition(lineRef);
+        data = (await getGeoPosition(lineRef))[0];
     } catch (err) {
         response.type("application/json").code(500);
         return {
