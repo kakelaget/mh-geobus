@@ -1,5 +1,6 @@
 const fastify = require('fastify')({ logger: true });
 
+const { getRealtime } = require('./handlers/et');
 const { getGeoPosition } = require('./handlers/geo');
 
 fastify.register(require('fastify-cors'), {
@@ -28,6 +29,22 @@ fastify.get('/geotest', async (request, response) => {
     }
     response.type("application/json").code(200);
     return { data };
+});
+
+fastify.get('/realtimetest', async (request, response) => {
+    const { lineRef } = request.query;
+
+    try {
+        const data = await getRealtime(lineRef);
+        response.type("application/json").code(200);
+        return { data };
+    } catch (err) {
+        response.type("application/json").code(500);
+        return {
+            error: err.message,
+            message: "Something went wrong while parsing XML from Siri",
+        };
+    }
 });
 
 fastify.listen(3000, '0.0.0.0', (err, _) => {
