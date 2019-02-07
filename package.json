@@ -8,7 +8,9 @@
   "license": "MIT",
   "private": false,
   "dependencies": {
-    "fastify": "^1.14.1"
+    "fastify": "^1.14.1",
+    "node-fetch": "^2.3.0",
+    "xml2js": "^0.4.19"
   },
   "scripts": {
     "start": "node src/index.js"
