@@ -9,6 +9,7 @@ fastify.register(require('fastify-cors'), {
         /localhost:?(\d{3,5})?/,
         /(.*).sklirg.io/,
         /(.*).amazonaws.com/,
+        "ruterna.no",
     ],
 });
 
