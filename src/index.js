@@ -7,7 +7,8 @@ const { getGeoPosition } = require('./handlers/geo');
 fastify.register(require('fastify-cors'), {
     origin: [
         /localhost:?(\d{3,5})?/,
-        /(.*).sklirg.io/
+        /(.*).sklirg.io/,
+        /(.*).amazonaws.com/,
     ],
 });
 
